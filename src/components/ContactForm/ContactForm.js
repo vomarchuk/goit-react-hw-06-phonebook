@@ -6,6 +6,7 @@ import Input from '../Input';
 import Label from '../Label';
 import options from '../options';
 import { addContact } from '../../redux/contacts/contacts-action';
+import { getItems } from '../../redux/contacts/contacts-selectors';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
@@ -13,7 +14,7 @@ const ContactForm = () => {
   const nameInputId = uuidv4();
   const numberInputId = uuidv4();
 
-  const contacts = useSelector(state => state.contacts.items);
+  const contacts = useSelector(getItems);
 
   const dispatch = useDispatch();
   const onSubmit = () => dispatch(addContact(name, number));

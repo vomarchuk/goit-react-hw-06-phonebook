@@ -1,19 +1,11 @@
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteContact } from '../../redux/contacts/contacts-action';
+import { getFilteredContacts } from '../../redux/contacts/contacts-selectors';
 import s from './ContactList.module.css';
+
 const ContactList = () => {
-  const getFilteredContacts = (allContacts, filter) => {
-    const normalizedFilter = filter.toLowerCase();
-    return allContacts.filter(({ name }) =>
-      name.toLowerCase().includes(normalizedFilter),
-    );
-  };
-
-  const contacts = useSelector(({ contacts: { items, filter } }) =>
-    getFilteredContacts(items, filter),
-  );
-
+  const contacts = useSelector(getFilteredContacts);
   const dispatch = useDispatch();
 
   return (

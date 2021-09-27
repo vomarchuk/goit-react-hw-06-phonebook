@@ -4,9 +4,10 @@ import ContactForm from '../ContactForm';
 import ContactList from '../ContactList/';
 import Filter from '../Filter';
 import { useSelector } from 'react-redux';
+import { getItemslength } from '../../redux/contacts/contacts-selectors';
 
 const App = () => {
-  const contacts = useSelector(state => state.contacts.items.length);
+  const contacts = useSelector(getItemslength);
 
   return (
     <>
